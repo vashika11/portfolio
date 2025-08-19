@@ -1,42 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vashika Tyagi | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
   <header>
-    <nav class="navbar">
-      <div class="logo">Vashika's Portfolio</div>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-item">Home</a></li>
-        <li><a href="#education" class="nav-item">Education</a></li>
-        <li><a href="#skills" class="nav-item">Skills</a></li>
-        <li><a href="#contact" class="nav-item">Contact</a></li>
-      </ul>
-      <button id="theme-toggle">🌙</button>
-    </nav>
+    <img src="assets/hero-banner.jpg" alt="Banner" />
+    <h1>Vashika Tyagi</h1>
+    <p>Python • Cloud • Data Analysis • UI/UX</p>
   </header>
 
-  <main>
-    <section id="home" class="section">
-      <h1>Hi, I'm <span class="highlight">Ananya</span></h1>
-      <p>I am a <span id="element"></span></p>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>B.Tech CSE student at MIET, Meerut. Passionate about Python, Cloud Computing, and Data Analysis. Quick learner and problem solver.</p>
+  </section>
 
-    <section id="skills" class="section">
-      <h2>Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <img src="html-icon.svg" class="svg-icon" alt="HTML Icon" />
-          <p>HTML</p>
-        </div>
-        <!-- Repeat for other skills -->
-      </div>
-    </section>
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <img src="assets/python.png" alt="Python" />
+      <img src="assets/golang.png" alt="GoLang" />
+      <img src="assets/html.png" alt="HTML" />
+      <img src="assets/css.png" alt="CSS" />
+    </div>
+  </section>
 
-    <!-- Other sections... -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>HealthSync</h3>
+      <p>Smart diet planner using Flask and scikit-learn.</p>
+      <a href="https://github.com/vashika11/HealthSync" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>MoodMap</h3>
+      <p>Mood journaling app with calendar visualization.</p>
+      <a href="https://github.com/vashika11/MoodMap" target="_blank">GitHub</a>
+    </div>
+  </section>
 
-    <footer id="contact">
-      <h2>Connect with Me</h2>
-      <ul class="social-links">
-        <li><a href="https://github.com/vashika11">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/vashikatyagi11">LinkedIn</a></li>
-      </ul>
-    </footer>
-  </main>
+  <section id="contact-form">
+    <h2>📬 Send Me a Message</h2>
+    <form action="https://formsubmit.co/vashikatyagi11@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
 </body>
+</html>
