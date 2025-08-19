@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vashika Tyagi | Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Hi, I'm Vashika 👋</h1>
+    <p>B.Tech CSE student passionate about Python, Cloud, and Data Analysis</p>
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Vashika Tyagi">
+  </section>
+</body>
+</html>
