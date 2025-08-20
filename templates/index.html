@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>Vashika Tyagi | Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/projects">Projects</a>
-    <a href="/contact">Contact</a>
-  </nav>
+  <header>
+    <img src="{{ url_for('static', filename='assets/profile.jpg') }}" alt="Vashika's Photo" class="profile-pic">
+    <h1 class="title">Hi, I'm Vashika 👩‍💻</h1>
+    <button onclick="toggleTheme()">🌗</button>
+  </header>
 
-  <section class="hero">
-    <h1>Hi, I'm Vashika 👋</h1>
-    <p>B.Tech CSE student passionate about Python, Cloud, and Data Analysis</p>
-    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Vashika Tyagi">
+  <section class="projects">
+    <div class="card">
+      <img src="{{ url_for('static', filename='assets/healthsync.svg') }}" class="svg-icon">
+      <h2>HealthSync</h2>
+      <p>Smart diet planner using Flask & ML</p>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='assets/moodmap.svg') }}" class="svg-icon">
+      <h2>MoodMap</h2>
+      <p>Emotion journal with calendar visuals</p>
+    </div>
   </section>
+
+  <section class="quotes">
+    <div id="quote-card"></div>
+  </section>
+
+  <canvas id="three-canvas"></canvas>
+
+  <footer>
+    <a href="{{ url_for('contact') }}">Contact Me</a>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/three-init.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/quotes.js') }}"></script>
 </body>
 </html>
