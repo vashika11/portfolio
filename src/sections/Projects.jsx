@@ -12,6 +12,8 @@ const Projects = () => {
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
+    if (myProjects.length === 0) return;
+
     const carouselSlides = myProjects.map((project, index) => ({
       key: uuidv4(),
       content: <ProjectCard project={project} />,
@@ -31,18 +33,18 @@ const Projects = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <LinearGradient gradient={["to left", "#ff9720 ,#fc0865"]}>
+            <LinearGradient gradient={["to left", "#ff9720,#fc0865"]}>
               Projects
             </LinearGradient>
           </motion.h2>
         </div>
 
         <motion.div
+          aria-label="Project carousel"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={(event, info) => {
             const swipe = info.offset.x;
-
             if (swipe > 50) {
               setSlideIndex(
                 (prev) => (prev - 1 + myProjects.length) % myProjects.length
@@ -51,7 +53,7 @@ const Projects = () => {
               setSlideIndex((prev) => (prev + 1) % myProjects.length);
             }
           }}
-          className="w-full mt-24 mb-12 md:mt-32 md:mb-20 lg:mt-40 h-[400px] md:h-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="w-full mt-24 mb-12 md:mt-32 md:mb-20 lg:mt-40 h-[400px] sm:h-[450px] md:h-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing"
         >
           {slides.length > 0 && (
             <Carousel

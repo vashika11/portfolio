@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import Positionofresponsibility from "./sections/Positionofresponsibility";
+import PositionOfResponsibility from "./sections/PositionOfResponsibility";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
@@ -13,12 +13,16 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Skills />
-      <Positionofresponsibility/>
-      <Projects />
-      <Contact />
-      <Footer />
+      <main>
+        <Hero />
+        <Skills />
+        <PositionOfResponsibility />
+        <Projects />
+        <Contact />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
       <CursorGlow />
       <StarCanvas />
     </>

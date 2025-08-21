@@ -3,43 +3,27 @@ import { LinearGradient } from "react-text-gradients";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const TO_NAME = import.meta.env.VITE_EMAILJS_TO_NAME;
-const TO_EMAIL = import.meta.env.VITE_EMAILJS_TO_EMAIL;
+// Environment variables with fallback
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
+const TO_NAME = import.meta.env.VITE_EMAILJS_TO_NAME || "Vashika";
+const TO_EMAIL = import.meta.env.VITE_EMAILJS_TO_EMAIL || "your@email.com";
 
-/**
- * The Contact section of the website allows users to
- * submit a message to the website owner. The component renders a form with
- * name, email and message fields. When the form is submitted, the component
- * sends an email using EmailJS and displays a success or error message based
- * on the outcome of the email sending process.
- */
 const Contact = () => {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  /**
-   * Handles the change of the form fields, updates the
-   * component state with the new values.
-   * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - The change event.
-   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  /**
-   * Handles the form submission, sends an email using EmailJS
-   * and displays a success or error message based on the
-   * outcome of the email sending process.
-   * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
-   */
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+
     emailjs
       .send(
         SERVICE_ID,
@@ -56,17 +40,13 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible");
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
+          alert("Thank you. I will get back to you as soon as possible.");
+          setForm({ name: "", email: "", message: "" });
         },
         (error) => {
           setLoading(false);
-          console.log(error);
-          alert("Something went wrong!");
+          console.error("EmailJS Error:", error);
+          alert("Something went wrong while sending your message.");
         }
       );
   };
@@ -88,7 +68,7 @@ const Contact = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <LinearGradient gradient={["to left", "#ff9720 ,#fc0865"]}>
+            <LinearGradient gradient={["to left", "#ff9720,#fc0865"]}>
               Get In Touch
             </LinearGradient>
           </motion.h2>
@@ -108,6 +88,7 @@ const Contact = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
+                aria-label="Your name"
                 className="py-3 px-4 bg-[#46454d] rounded-lg"
                 placeholder="ex. John Doe"
               />
@@ -121,6 +102,7 @@ const Contact = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
+                aria-label="Your email address"
                 className="py-3 px-4 bg-[#46454d] rounded-lg"
                 placeholder="ex. johndoe@gmail.com"
               />
@@ -134,6 +116,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 rows={5}
+                aria-label="Your message"
                 className="py-3 px-4 bg-[#46454d] rounded-lg resize-none"
                 placeholder="Share your thoughts..."
               />
@@ -141,6 +124,7 @@ const Contact = () => {
 
             <motion.button
               type="submit"
+              aria-label="Send message"
               className="bg-[#ff9720] text-black w-full sm:w-fit py-3 px-6 rounded-lg font-bold outline-none self-center sm:self-start"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
